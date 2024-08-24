@@ -7,15 +7,15 @@ module.exports = {
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
-        'white': '#ffffff',
-        'primary':'  #A92525',
-        'secondary': '#A92525',
-        'white' : '#ffffff'
+        'input': '#EFEFEF',
+        'primary':'  #2E36C0',
+        'secondary': '#F7F7F7',
+        
        
       },
       fontFamily: {
-        montserrat: ['Montserrat', 'sans-serif'],
-        DMsans: ['DM Sans', 'sans-serif'],
+        head: ['Montserrat', 'sans-serif'],
+        body: ['DM Sans', 'sans-serif'],
       },
     },
     screens: {
