@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { addNewAgent, getAllMbAgents, getAllMgAgents } from "./adminApi";
+import { addNewAgent, getAllMbAgents, getAllMgAgents} from "./adminApi";
 
 export const fetchAllMbAgents = createAsyncThunk(
   "agents/fetchAllMbAgents",
@@ -26,6 +26,8 @@ export const fetchAllMgAgents = createAsyncThunk(
     }
   }
 );
+
+
 
 export const addAgent = createAsyncThunk(
   "agents/addAgent",
@@ -57,7 +59,6 @@ const adminSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchAllMbAgents.fulfilled, (state, action) => {
-        console.log("MB Agents Fulfilled:", action.payload); // Log payload
         state.mbAgents = action.payload;
         state.loading = false;
       })
@@ -70,8 +71,7 @@ const adminSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchAllMgAgents.fulfilled, (state, action) => {
-        console.log("MG Agents Fulfilled:", action.payload); // Log payload
-        state.mgAgents = action.payload;
+          state.mgAgents = action.payload;
         state.loading = false;
       })
       .addCase(fetchAllMgAgents.rejected, (state, action) => {

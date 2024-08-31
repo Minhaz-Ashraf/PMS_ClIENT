@@ -32,39 +32,28 @@ const Nav = () => {
             {" "}
             <p
               className={` cursor-pointer text-white hover:bg-white hover:text-primary  py-2 px-3  mt-6 rounded-xl text-[17px] "  ${
-                (path === "/admin/dashboard" ||
-                  path === "/admin/active-users" ||
-                  path === "/admin/male-users" ||
-                  path === "/admin/female-users" ||
-                  path === "/admin/successfull-married" ||
-                  path === "/admin/deleted-users" ||
-                  path === "/admin/CategoryA-users" ||
-                  path === "/admin/categoryB-users" ||
-                  path === "/admin/categoryC-users" ||
-                  path === "/admin/banned-users" ||
-                  path === "/admin/rejected-users" ||
-                  path === "/admin/uncategorised-users") &&
+                (path === "/admin/dashboard") &&
                 "adminnav"
               }`}
             >
               Dashboard
             </p>
           </Link>
-          <Link to="/admin/user">
+          <Link to="/admin/policy-lists">
             {" "}
             <p
               className={` cursor-pointer text-white hover:bg-white hover:text-primary  py-2 px-3 mt-6 rounded-xl text-[17px]  ${
-                path === "/admin/user" && "adminnav"
+                path === "/admin/policy-lists" && "adminnav"
               }`}
             >
               Admin Policies List
             </p>
           </Link>
-          <Link to="/admin/currency-value">
+          <Link to="/admin/approval-lists">
             {" "}
             <p
               className={` cursor-pointer text-white hover:bg-white hover:text-primary  py-2 px-3  mt-6 rounded-xl text-[17px] ${
-                path === "/admin/currency-value" && "adminnav"
+                path === "/admin/approval-lists" && "adminnav"
               }`}
             >
               Approval Page
@@ -117,18 +106,8 @@ const Nav = () => {
                 {" "}
                 <p
                   className={` cursor-pointer text-black hover:bg-primary hover:text-white  py-2 px-3  mt-6 rounded-xl text-[17px] "  ${
-                    (path === "/admin/dashboard" ||
-                      path === "/admin/active-users" ||
-                      path === "/admin/male-users" ||
-                      path === "/admin/female-users" ||
-                      path === "/admin/successfull-married" ||
-                      path === "/admin/deleted-users" ||
-                      path === "/admin/CategoryA-users" ||
-                      path === "/admin/categoryB-users" ||
-                      path === "/admin/categoryC-users" ||
-                      path === "/admin/banned-users" ||
-                      path === "/admin/rejected-users" ||
-                      path === "/admin/uncategorised-users") &&
+                    (path === "/admin/dashboard" 
+                ) &&
                     "adminresnav"
                   }`}
                 >

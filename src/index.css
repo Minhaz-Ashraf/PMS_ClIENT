@@ -116,7 +116,7 @@ input[type="checkbox"]:checked {
 }
 
 .shadow {
-  box-shadow: #ce6a6a 0px 1px 2px 0px, #ffd2d2 0px 2px 6px 2px;
+  box-shadow: #2E36C0 0px 1px 2px 0px, #ffd2d2 0px 2px 6px 2px;
 }
 
 .selectedProfile {
@@ -436,19 +436,7 @@ input[type="file"] {
   }
 }
 
-input[type="date"]::-webkit-inner-spin-button,
-input[type="date"]::-webkit-calendar-picker-indicator {
-  background: transparent;
-  bottom: 0;
-  color: transparent;
-  cursor: pointer;
-  height: auto;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: auto;
-}
+
 
 .bright {
   filter: brightness(39%);

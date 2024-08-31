@@ -6,6 +6,7 @@ const AdminCards = ({name, agentId, link}) => {
   return (
     <>
 
+
         <div className='bg-secondary flex flex-col items-center w-60 rounded-md pt-5 mt-6'>
            <p className='font-medium  '>{name} </p>
            <p className='font-medium pt-1'>{agentId}</p>

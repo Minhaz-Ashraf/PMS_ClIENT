@@ -1,13 +1,14 @@
 // import axios from "axios";
+// import { getToken } from "./helper/GetToken";
+
 
 // const apiurl = axios.create({
 //   baseURL: import.meta.env.VITE_APP_DEV_BASE_URL,
-//   // You can add other default configurations here if needed
 // });
 
 // apiurl.interceptors.request.use(
 //   (config) => {
-//     const tokenId = getToken(); // Fetch token inside the interceptor
+//     const tokenId = getToken(); 
 //     console.log(tokenId);
 //     if (tokenId) {
 //       config.headers.Authorization = `Bearer ${tokenId}`;
@@ -20,6 +21,7 @@
 // );
 
 // export default apiurl;
+
 
 
 import axios from "axios";

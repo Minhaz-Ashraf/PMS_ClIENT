@@ -7,7 +7,7 @@ export const signin = createAsyncThunk(
   async ({ email, password }, { rejectWithValue }) => {
     try {
       const data = await signinUser({ email, password });
-      localStorage.setItem('token', data.token);  
+      localStorage.setItem('userAuthToken', data.token);  
       return data;
     } catch (error) {
       return rejectWithValue(error);
@@ -20,7 +20,7 @@ const authSlice = createSlice({
     name: 'auth',
     initialState: {
       user: null,
-      token: localStorage.getItem('token') || null,
+      token: localStorage.getItem('userAuthToken') || null,
       status: 'idle',
       error: null,
     },
@@ -28,7 +28,7 @@ const authSlice = createSlice({
       logout(state) {
         state.user = null;
         state.token = null;
-        localStorage.removeItem('token'); 
+        localStorage.removeItem('userAuthToken'); 
       },
     },
     extraReducers: (builder) => {

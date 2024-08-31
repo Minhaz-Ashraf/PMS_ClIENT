@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { logo } from "../assets";
 import { useAuth } from "../features/authSlice";
+import { toast } from "react-toastify";
+import {useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const { login } = useAuth();
     const [loginCred, setLoginCred] = useState({
         email: "",
@@ -18,7 +21,14 @@ const Login = () => {
    }
 
    const handleLogin = () => {
-    login(loginCred?.email, loginCred?.password);
+    try{
+      login(loginCred?.email, loginCred?.password);
+        toast.success("Login successful")
+          navigate("/admin/dashboard")
+    }catch(err){
+      toast.error("Invalied Credentials")
+    }
+    
   };
   return (
     <>

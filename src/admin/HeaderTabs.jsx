@@ -38,7 +38,11 @@ const HeaderTab = () => {
           </p>
         </Link>
 
-        <Link to="/admin/addmg-policies">
+        <Link to="/admin/add-policies"
+        state={
+          {policyType: "MG"}
+        }
+        >
           <p
             className={` rounded-md bg-primary text-white mb-9 font-normal md:px-6 sm:px-6 w-56 px-6 text-center py-2 cursor-pointer ${
               path === "/admin/male-users" && "active"
@@ -47,7 +51,10 @@ const HeaderTab = () => {
             + Add New MG Policies
           </p>
         </Link>
-        <Link to="/admin/addmb-policies">
+        <Link to="/admin/add-policies"
+           state={
+          {policyType: "MB"}
+        }>
           <p
             className={`rounded-md bg-primary text-white mb-9 py-2 font-normal md:px-6 sm:px-6 sm:w-48 w-56 md:w-56 px-6 text-center cursor-pointer ${
               path === "/admin/female-users" && "active"

@@ -88,7 +88,12 @@ const AddAgent = () => {
       newErrors.password =
         "Password must contain at least one letter, one number, and one special character";
     }
-
+    if (agentData.password.length < 10) {
+      newErrors.password = "Password must be at least 10 characters long";
+    }
+    if (agentData.confirmPassword.length < 10) {
+      newErrors.confirmPassword = "Confirm password doesn't matched";
+    }
     setErrors(newErrors);
 
     // If there are no errors, the form is valid
@@ -110,7 +115,7 @@ const AddAgent = () => {
         toast.error(error?.message);
       }
     } else {
-      1;
+      
       toast.error("Please correct the errors in the form");
     }
   };
