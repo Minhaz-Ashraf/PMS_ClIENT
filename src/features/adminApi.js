@@ -26,7 +26,16 @@ export const addNewAgent = async (agentData) => {
     return response.data;
   } catch (error) {
     console.error("Error adding agent:", error);
-    throw error;
+    throw error;  
   }
 };
 
+export const  deleteAgent  = async (userId) =>{
+  try{
+    const response  = await apiurl.delete(`/deleteAgent/${userId}`)
+    return response.data
+  }catch(error){
+    console.log("Error whle deleting agents",error)
+  }
+
+}

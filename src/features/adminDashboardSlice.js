@@ -1,5 +1,14 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { addNewAgent, getAllMbAgents, getAllMgAgents} from "./adminApi";
+import {
+  createAsyncThunk,
+  createSlice,
+  isRejectedWithValue,
+} from "@reduxjs/toolkit";
+import {
+  addNewAgent,
+  deleteAgent,
+  getAllMbAgents,
+  getAllMgAgents,
+} from "./adminApi";
 
 export const fetchAllMbAgents = createAsyncThunk(
   "agents/fetchAllMbAgents",
@@ -27,8 +36,6 @@ export const fetchAllMgAgents = createAsyncThunk(
   }
 );
 
-
-
 export const addAgent = createAsyncThunk(
   "agents/addAgent",
   async (agentData, { rejectWithValue }) => {
@@ -41,12 +48,25 @@ export const addAgent = createAsyncThunk(
   }
 );
 
+export const deleteAgentData = createAsyncThunk(
+  "agents/deleteAgent",
+  async (userId, { rejectedValue }) => {
+    try {
+      const response = await deleteAgent(userId);
+      return response;
+    } catch (error) {
+      return rejectedValue(error.response.data);
+    }
+  }
+);
+
 const adminSlice = createSlice({
   name: "admin",
   initialState: {
     mbAgents: [],
     mgAgents: [],
     newAgent: [],
+    deleteAgent: [],
     status: "idle",
     loading: false,
     error: null,
@@ -71,7 +91,7 @@ const adminSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchAllMgAgents.fulfilled, (state, action) => {
-          state.mgAgents = action.payload;
+        state.mgAgents = action.payload;
         state.loading = false;
       })
       .addCase(fetchAllMgAgents.rejected, (state, action) => {
@@ -86,6 +106,17 @@ const adminSlice = createSlice({
         state.newAgent.push(action.payload);
       })
       .addCase(addAgent.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
+      })
+      .addCase(deleteAgentData.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(deleteAgentData.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.deleteAgent.push(action.payload);
+      })
+      .addCase(deleteAgentData.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
       });

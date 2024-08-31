@@ -4,6 +4,7 @@ import Nav from "./Nav";
 import AdminCards from "../Components/AdminCards";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  deleteAgentData,
   fetchAllMbAgents,
   fetchAllMgAgents,
 } from "../features/adminDashboardSlice";
@@ -21,6 +22,16 @@ const Dashboard = () => {
     setToggle(index);
   };
   console.log(mbAgents);
+
+const handleDelete = async(userId) => {
+  try {
+    const response = await dispatch(deleteAgentData(userId)).unwrap(); 
+    return response;
+  } catch (error) {
+    console.log("Error while deleting", error);
+  }
+};
+
   return (
     <>
       <div className="fixed">
@@ -70,19 +81,23 @@ const Dashboard = () => {
           {mgAgents?.map((agent) => (
             <AdminCards
               key={agent._id}
+              id={agent._id}
               name={agent.agentName}
               agentId={agent.agentId}
+              handleDelete = {handleDelete}
               link="/mgAgent"
             />
           ))}
         </div>
 
         <div className={toggle === 2 ? " flex flex-wrap gap-3 pt-2" : "hidden"}>
-          {mbAgents?.map((mbagent) => (
+          {mbAgents?.map((agent) => (
             <AdminCards
-              key={mbagent._id}
-              name={mbagent.agentName}
-              agentId={mbagent.agentId}
+              key={agent._id}
+              id={agent._id}
+              name={agent.agentName}
+              agentId={agent.agentId}
+              handleDelete={handleDelete}
               link="/mbAgent"
             />
           ))}
