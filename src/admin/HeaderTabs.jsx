@@ -26,9 +26,11 @@ const HeaderTab = () => {
     <>
       <div
         ref={containerRef}
-        className="flex md:justify-start sm:justify-start justify-start items-center gap-9 md:pt-9 sm:pt-9 pt-20 md:gap-16 overflow-x-scroll md:mx-6 sm:mx-9 scrollbar-hide sm:gap-10"
+        className="flex md:flex-row sm:flex-row flex-col md:justify-start sm:justify-start justify-start items-start md:items-center sm:items-center mx-6  md:pt-9 sm:pt-9 pt-20 md:gap-16 overflow-x-scroll md:mx-6 sm:mx-9 scrollbar-hide sm:gap-10"
       >
-        <Link to="/admin/add-agent">
+        <Link  to="/admin/add-agent" state={
+          {addNew: "isNew"}
+        }>
           <p
             className={` rounded-md bg-primary text-white mb-9 font-normal  md:px-6 sm:px-6 w-48 px-6 text-center py-2 cursor-pointer ${
               path === "/admin/active-users" && "active"
@@ -40,7 +42,7 @@ const HeaderTab = () => {
 
         <Link to="/admin/add-policies"
         state={
-          {policyType: "MG"}
+          {policyType: "MG", addNew: "isNew"}
         }
         >
           <p
@@ -53,7 +55,7 @@ const HeaderTab = () => {
         </Link>
         <Link to="/admin/add-policies"
            state={
-          {policyType: "MB"}
+          {policyType: "MB", addNew: "isNew"}
         }>
           <p
             className={`rounded-md bg-primary text-white mb-9 py-2 font-normal md:px-6 sm:px-6 sm:w-48 w-56 md:w-56 px-6 text-center cursor-pointer ${

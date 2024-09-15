@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { close, logo, menu } from "../assets";
 import LogoutPop from "../Components/LogoutPop";
 
-const Nav = () => {
+const SideNav = () => {
   const location = useLocation();
   const path = location.pathname;
   const [isLogoutOpen, setisLogoutOpen] = useState(false);
@@ -21,49 +21,26 @@ const Nav = () => {
     <>
       <LogoutPop isLogoutOpen={isLogoutOpen} closeLogout={closeLogout} />
       <div className="bg-navcolor  px-9 py-9 text-start w-60 h-screen rounded-r-3xl hidden md:block sm:block  ">
-        <img src={logo} alt="" loading="lazy" className="w-40 h-28" />
+      <img src={logo} alt="" loading="lazy" className="w-40 h-28" />
 
-        <div className="flex  items-center relative gap-3"></div>
+        <div className="flex  items-center relative gap-3">
+
+      
+        </div>
 
         <span>
-          <Link to="/admin/dashboard">
+          <Link to="/agent-dashboard">
             {" "}
             <p
               className={` cursor-pointer text-white hover:bg-white hover:text-primary  py-2 px-3  mt-6 rounded-xl text-[17px] "  ${
-                (path === "/admin/dashboard" ||
-                  path === "/admin/add-policies" ||
-                  path === "/admin/cancelled-policy" ||
-                  path === "/admin/add-agent" ||
-                  path === "/admin/update-policies"||
-                  path === "/admin/active-policy" ||
-                  path === "/admin/update-agent" ||
-                  path === "/admin/agent-policies") &&
+                (path === "/agent-dashboard" || path === "/new-policy") &&
                 "adminnav"
               }`}
             >
               Dashboard
             </p>
           </Link>
-          <Link to="/admin/policies">
-            {" "}
-            <p
-              className={` cursor-pointer text-white hover:bg-white hover:text-primary  py-2 px-3 mt-6 rounded-xl text-[17px]  ${
-                path === "/admin/policies" && "adminnav"
-              }`}
-            >
-              Admin Policies List
-            </p>
-          </Link>
-          <Link to="/admin/approval-lists">
-            {" "}
-            <p
-              className={` cursor-pointer text-white hover:bg-white hover:text-primary  py-2 px-3  mt-6 rounded-xl text-[17px] ${
-                path === "/admin/approval-lists" && "adminnav"
-              }`}
-            >
-              Approval Page
-            </p>
-          </Link>
+        
 
           <Link to="">
             {" "}
@@ -77,7 +54,8 @@ const Nav = () => {
         </span>
       </div>
       {/* // responsive nav */}
-<div className=" flex flex-row items-center justify-between w-[43vh]  fixed">
+
+      <div className=" flex flex-row items-center justify-between w-[43vh]  fixed">
 <span>
 <img src={logo} alt="logo" className="w-24 h-20" /></span>
       <div className="md:hidden sm:hidden ">
@@ -101,40 +79,14 @@ const Nav = () => {
                 {" "}
                 <p
                   className={` cursor-pointer text-white hover:bg-primary hover:text-white  py-2 px-3  mt-6 rounded-xl text-[17px] "  ${
-                     (path === "/admin/dashboard" ||
-                  path === "/admin/add-policies" ||
-                  path === "/admin/cancelled-policy" ||
-                  path === "/admin/add-agent" ||
-                  path === "/admin/update-policies"||
-                  path === "/admin/active-policy" ||
-                  path === "/admin/update-agent" ||
-                  path === "/admin/agent-policies")  && "adminresnav"
+                     path === "/agent-dashboard"   && "adminresnav"
                   }`}
                 >
                   Dashboard
                 </p>
               </Link>
-              <Link to="/admin/policies">
-                {" "}
-                <p
-                  className={` cursor-pointer text-white hover:bg-primary hover:text-white  py-2 px-3  mt-6 rounded-xl text-[17px] "  ${
-                    path === "/admin/policies" && "adminresnav"
-                  }`}
-                >
-                  Admin Policies
-                </p>
-              </Link>
-              <Link to="/admin/approval-lists">
-                {" "}
-                <p
-                  className={` cursor-pointer text-white hover:bg-primary hover:text-white  py-2 px-3 mt-6 rounded-xl text-[17px]  ${
-                    path === "/admin/approval-lists" && "adminresnav"
-                  }`}
-                >
-                  Approval Page
-                </p>
-              </Link>
-           
+        
+          
             
               <span>
                 {" "}
@@ -154,4 +106,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default SideNav;

@@ -1,5 +1,4 @@
-import apiurl from "../utils";
-import { getToken } from "./GetToken";
+
 
 export const createdDate = () => {
   const currentDate = new Date();
@@ -38,21 +37,73 @@ const calculatePercentage = (price, percentage) => {
   return (price * percentage) / 100;
 };
 
-export const fetchUserById = async (userId) => {
-  const token = getToken();
-  try {
-    const response = await apiurl.get(`/getUserDataById/${userId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    
-    return response.data;
-  } catch (error) {
-    console.error(
-      "Error fetching user data:",
-      error.response?.data || error.message
-    );
-    throw error;
+
+export const formatDate = (isoDate) => {
+  const date = new Date(isoDate);
+  const day = String(date.getDate()).padStart(2, '0'); 
+  const month = String(date.getMonth() + 1).padStart(2, '0'); 
+  const year = date.getFullYear();
+  
+  return `${day}/${month}/${year}`; 
+};
+
+
+export const formatFieldName = (field) => {
+  switch (field) {
+    case "customerName":
+      return "Customer Name";
+    case "address":
+      return "Address";
+    case "email":
+      return "Email Address";
+    case "panNumber":
+      return "PAN Number";
+    case "contactNumber":
+      return "Contact Number";
+    case "customerGstNumber":
+      return "Customer GST Number";
+    case "vehicleManufacturer":
+      return "Vehicle Manufacturer";
+    case "vehicleModel":
+      return "Vehicle Model";
+    case "ewVehicleEntryAge":
+      return "Extended Warranty Vehicle Entry Age";
+    case "vehicleEngineNumber":
+      return "Vehicle Engine Number";
+    case "vehicleIdNumber":
+      return "Vehicle ID Number";
+    case "vehicleRegNumber":
+      return "Vehicle Registration Number";
+    case "fuelType":
+      return "Fuel Type";
+    case "vehiclePurchaseDate":
+      return "Vehicle Purchase Date";
+    case "exshowroomPrice":
+      return "Ex-Showroom Price";
+    case "odometerReading":
+      return "Odometer Reading";
+    case "coolingOffPeriod":
+      return "Cooling Off Period";
+    case "extWarrantyStartDate":
+      return "Extended Warranty Start Date";
+    case "extWarrantyEndDate":
+      return "Extended Warranty End Date";
+    case "product":
+      return "Product";
+    case "typeOfPackage":
+      return "Type of Package";
+    case "productPrice":
+      return "Product Price";
+    case "gst":
+      return "GST";
+    case "totalPrice":
+      return "Total Price";
+    case "price":
+      return "Price";
+    case "hypothecation":
+      return "Hypothecation";
+    default:
+      return field.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
   }
 };
+

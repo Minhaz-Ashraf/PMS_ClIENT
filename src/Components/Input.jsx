@@ -1,6 +1,6 @@
 import React from "react";
 
-const InputField = ({ type, className, value, name, onchange, placeholder, autocomplete}) => {
+const InputField = ({ type, className, value, name, onchange, placeholder, autocomplete, max}) => {
   return (
     <>
       <input
@@ -11,6 +11,7 @@ const InputField = ({ type, className, value, name, onchange, placeholder, autoc
         placeholder={placeholder}
         onChange={onchange}
         autoComplete={autocomplete}
+        max={max}
     
       />
     </>

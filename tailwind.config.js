@@ -8,8 +8,9 @@ module.exports = {
         transparent: 'transparent',
         current: 'currentColor',
         'input': '#EFEFEF',
-        'primary':'  #2E36C0',
-        'secondary': '#F7F7F7',
+        'primary':'  #6149CD',
+        'secondary': '#F8F8FF',
+        'navcolor' : '#0A1629'
         
        
       },

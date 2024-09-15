@@ -6,7 +6,8 @@ export const signin = createAsyncThunk(
   'auth/signin',
   async ({ email, password }, { rejectWithValue }) => {
     try {
-      const data = await signinUser({ email, password });
+    
+      const data = await signinUser(email, password);
       localStorage.setItem('userAuthToken', data.token);  
       return data;
     } catch (error) {
@@ -53,13 +54,10 @@ const authSlice = createSlice({
 
 
   export const useAuth = () => {
-    const dispatch = useDispatch();
+
     const { user, token, status, error } = useSelector((state) => state.auth);
   
-    const login = (email, password) => {
-      dispatch(signin({ email, password }));
-    };
-  
+ 
     const logoutUser = () => {
       dispatch(logout());
     };

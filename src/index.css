@@ -19,6 +19,13 @@ input[type="radio"]:checked {
   background: radial-gradient(circle at center, #e01d1d 50%, transparent 20.5%);
 }
 
+.bg-Image{
+  background-image: url('./assets/loginBanner.png');
+
+  background-size:cover;
+  background-repeat: no-repeat;
+}
+
 /* Chat.css */
 .chat-container {
   max-height: calc(100vh - 100px);
@@ -111,12 +118,12 @@ input[type="checkbox"]:checked {
 }
 
 .adminresnav {
-  color: white;
-  background-color: #2E36C0;
+  color: #2E36C0;
+  background-color: white;
 }
 
 .shadow {
-  box-shadow: #2E36C0 0px 1px 2px 0px, #ffd2d2 0px 2px 6px 2px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .selectedProfile {
@@ -466,25 +473,25 @@ input[type="file"] {
 
 @-webkit-keyframes slide-top {
   100% {
-    -webkit-transform: translateY(169px);
-    transform: translateY(169px);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
   }
 
   0% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
+    -webkit-transform: translateY(169px);
+    transform: translateY(169px);
   }
 }
 
 @keyframes admin-slide-top {
   100% {
-    -webkit-transform: translateX(169px);
-    transform: translateX(169px);
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
   }
 
   0% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
+    -webkit-transform: translateX(169px);
+    transform: translateX(169px);
   }
 }
 

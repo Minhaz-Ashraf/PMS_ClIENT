@@ -1,20 +1,31 @@
 import apiurl from "../utils";
 
-export const submitPolicyData = async (userId, policyData, token) => {
+export const submitPolicyData = async (userId, policyData, token, addNew, update, pId) => {
   try {
-    const response = await apiurl.post("/add-policies", {
-      userId,
-      ...policyData,
-    });
+    const response = await apiurl.post(
+      "/add-policies",
+      {
+        userId,
+        ...policyData,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          addNew: addNew,
+          update: update,
+          id: pId
+        },
+      }
+    );
     return response.data;
   } catch (error) {
-    console.error(
-      "Error submitting policy data:",
-      error.response?.data || error.message
-    );
+    console.error("Error submitting policy data:", error.response?.data || error.message);
     throw error;
   }
 };
+
 export const getAllPendingPolicy = async (page = 1, limit = 10, manufacturer) => {
   try {
     const response = await apiurl.get("/pendingPolicy", {
@@ -30,13 +41,17 @@ export const getAllPendingPolicy = async (page = 1, limit = 10, manufacturer) =>
   }
 };
 
-  export const updatePolicyStatus = async (userId, type, policyData) => {
+  export const updatePolicyStatus = async (userId, type, policyData, reason) => {
 
     try {
       const response = await apiurl.put("/policyStatus", {
       id: userId,
     type: type,
       ...policyData,
+      },{
+        params:{
+          reason: reason
+        }
       });
 
       return response.data;
@@ -48,3 +63,13 @@ export const getAllPendingPolicy = async (page = 1, limit = 10, manufacturer) =>
       throw error;
     }
   };
+
+  export const cancelRequest = async(id)=>{
+    try{
+      const response = await apiurl.put(`/cancel-request/${id}`)
+         return response.data
+    }catch(error){
+      console.log(error, "Error while cancel request")
+    }
+     
+  }

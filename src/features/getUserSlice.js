@@ -5,17 +5,19 @@ import apiurl from "../utils";
 export const fetchUsers = createAsyncThunk(
   "users/fetchUsers",
   async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const token = state.auth.token; 
-  console.log(token, "token")
+    // const state = thunkAPI.getState();
+    // const token = state.auth.token; 
+    const token = localStorage.getItem("userAuthToken")
     try {
       const response = await apiurl.get("/getUserData", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response)
-      return response.data;
+      const { roleType } = response.data;
+
+      localStorage.setItem("roleType", roleType);
+      return response.data; 
     } catch (error) {
       return thunkAPI.rejectWithValue(
         error.response?.data?.message || "Failed to fetch users"
@@ -45,6 +47,7 @@ const userSlice = createSlice({
       })
       .addCase(fetchUsers.rejected, (state, action) => {
         state.status = "failed";
+        console.log("Fetch users failed:", action.payload);
         state.error = action.payload;
       });
   },
